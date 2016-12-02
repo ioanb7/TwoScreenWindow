@@ -26,6 +26,8 @@ namespace TwoScreenWindow
             InitializeComponent();
         }
 
+       
+
         private void button_Click(object sender, RoutedEventArgs e)
         {
             OnTopWindow fullScreenWindow;
@@ -44,7 +46,7 @@ namespace TwoScreenWindow
             fullScreenWindow.Top = workingArea.Top;
             fullScreenWindow.Width = workingArea.Width;
             fullScreenWindow.Height = workingArea.Height;
-            fullScreenWindow.WindowState = WindowState.Maximized;
+            fullScreenWindow.WindowState = WindowState.Normal;
             fullScreenWindow.WindowStyle = WindowStyle.None;
             fullScreenWindow.Topmost = true;
 
@@ -55,26 +57,27 @@ namespace TwoScreenWindow
 
 
             //second display
-            fullScreenWindow = new OnTopWindow();
+           var  fullScreenWindowTwo = new OnTopWindow();
             fullScreenWindow.WindowState = WindowState.Normal;
 
-            fullScreenWindow.WindowStartupLocation = WindowStartupLocation.Manual;
+            fullScreenWindowTwo.WindowStartupLocation = WindowStartupLocation.Manual;
 
             Debug.Assert(System.Windows.Forms.SystemInformation.MonitorCount > 1);
 
             System.Drawing.Rectangle workingArea2 = System.Windows.Forms.Screen.AllScreens[1].WorkingArea;
-            fullScreenWindow.Left = workingArea2.Left;
-            fullScreenWindow.Top = workingArea2.Top;
-            fullScreenWindow.Width = workingArea2.Width;
-            fullScreenWindow.Height = workingArea2.Height;
+            fullScreenWindowTwo.Left = workingArea2.Left;
+            fullScreenWindowTwo.Top = workingArea2.Top;
+            fullScreenWindowTwo.Width = workingArea2.Width;
+            fullScreenWindowTwo.Height = workingArea2.Height;
+            fullScreenWindowTwo.WindowState = WindowState.Normal;
+            fullScreenWindowTwo.WindowStyle = WindowStyle.None;
+            fullScreenWindowTwo.Topmost = true;
+
+            fullScreenWindowTwo.Show();
+
+
             fullScreenWindow.WindowState = WindowState.Maximized;
-            fullScreenWindow.WindowStyle = WindowStyle.None;
-            fullScreenWindow.Topmost = true;
-
-            fullScreenWindow.Show();
-
-
-
+            fullScreenWindowTwo.WindowState = WindowState.Maximized;
 
         }
     }
